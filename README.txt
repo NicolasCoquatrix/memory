@@ -1,0 +1,1 @@
+Ce programme contient des scripts devant être traité par un serveur web et nécessite donc un localhost afin de pouvoir fonctionner.

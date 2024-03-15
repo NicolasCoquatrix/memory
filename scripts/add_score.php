@@ -2,7 +2,7 @@
 
 session_start();
 
-require '../data/db-connect.php';
+require $_SERVER['DOCUMENT_ROOT'].'/data/db-connect.php';
 
 $query = $dbh->query("SELECT * FROM difficulty");
 $difficulties = $query->fetchAll();
@@ -17,7 +17,7 @@ if(isset($_POST['moves_count'], $_POST['timer'])){
             break;
         }
     }
-    $query = $dbh->query("INSERT INTO score (score_moves, score_time, difficulty_id) VALUES ($movesCount, $timer, $difficultyId);");
+    $query = $dbh->query("INSERT INTO score (score_name, score_moves, score_time, difficulty_id) VALUES ('Anonyme', $movesCount, $timer, $difficultyId);");
     $myScoreId = $dbh->lastInsertId();
     $_SESSION['update_id'] = $myScoreId;
     $pseudo = 'Anonyme' . $myScoreId;

@@ -3,12 +3,12 @@
 session_start();
 $updateId = $_SESSION['update_id'];
 
-require '../data/db-connect.php';
+require $_SERVER['DOCUMENT_ROOT'].'/data/db-connect.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['pseudo'])){
     if(!empty($_POST['pseudo'])){
         $pseudo = $_POST['pseudo'];
-        $pseudo = escapeCharacters($pseudo);
+        $pseudo = $dbh->quote($pseudo);
         $dbh->query("UPDATE score SET score_name = $pseudo WHERE score_id = $updateId;");
     }
 }

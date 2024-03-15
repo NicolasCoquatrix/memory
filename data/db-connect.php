@@ -1,18 +1,10 @@
 <?php
-
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbName = 'memory';
-
-try {
-    $dbh = new PDO("mysql:host=$host;dbname=$dbName", $user, $password, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-    exit;
+try{
+	$dbh = new PDO('sqlite:'.$_SERVER['DOCUMENT_ROOT'].'/data/db.sqlite');
+	$dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(Exception $e) {
+	echo "Impossible d'accéder à la base de données : ".$e->getMessage();
+	exit;
 }
-
-function escapeCharacters($input) {
-    global $dbh;
-    return $dbh->quote($input);
-}
+?>

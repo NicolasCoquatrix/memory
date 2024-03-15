@@ -2,7 +2,7 @@
 
 session_start();
 
-require 'data/db-connect.php';
+require $_SERVER['DOCUMENT_ROOT'].'/data/db-connect.php';
 
 $myScoreId = $_SESSION['update_id'];
 

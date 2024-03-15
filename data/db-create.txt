@@ -1,0 +1,62 @@
+CREATE TABLE playing_card(
+   card_id INTEGER,
+   card_name TEXT NOT NULL,
+   card_image TEXT,
+   card_color TEXT,
+   PRIMARY KEY(card_id),
+   UNIQUE(card_name)
+);
+
+INSERT INTO playing_card (card_name, card_image, card_color)
+VALUES 
+    ('Lapin', 'images/rabbit.png', 'edd6c5'),
+    ('Écureuil', 'images/squirrel.png', 'c87b5d'),
+    ('Renard', 'images/fox.png', 'c87b5d'),
+    ('Hérisson', 'images/hedgehog.png', 'edd6c5'),
+    ('Panda', 'images/panda.png', '2a2e2f'),
+    ('Loutre', 'images/otter.png', '664c41'),
+    ('Hamster', 'images/hamster.png', '7a7671'),
+    ('Moineau', 'images/sparrow.png', '6a6969'),
+    ('Zèbre', 'images/zebra.png', 'd3d3d3'),
+    ('Rhinoceros', 'images/rhinoceros.png', '8a735a'),
+    ('Mouton', 'images/sheep.png', 'f9f1e9'),
+    ('Chevreuil', 'images/deer.png', 'bb7f3a'),
+    ('Lion', 'images/lion.png', 'face9e'),
+    ('Escargot', 'images/snail.png', 'c88b1a'),
+    ('Chèvre', 'images/goat.png', '8d6234'),
+    ('Narval', 'images/narwhal.png', '51bac8'),
+    ('Poisson', 'images/goldfish.png', 'ff7f1c'),
+    ('Raton laveur', 'images/raccoon.png', '767676'),
+    ('Hibou', 'images/owl.png', 'f9506c'),
+    ('Girafe', 'images/giraffe.png', 'f9b620'),
+    ('Sauterelle', 'images/grasshopper.png', '9cd586'),
+    ('Vautour', 'images/vulture.png', '71402b'),
+    ('Cochon', 'images/pig.png', 'fbb1b1'),
+    ('Chenille', 'images/caterpillar.png', 'e9ad6f'),
+    ('Pieuvre', 'images/octopus.png', 'aa6afd');
+
+
+CREATE TABLE difficulty(
+   difficulty_id INTEGER,
+   difficulty_name TEXT NOT NULL,
+   difficulty_link TEXT NOT NULL,
+   PRIMARY KEY(id_difficulty),
+   UNIQUE(difficulty_name),
+   UNIQUE(difficulty_link)
+);
+
+INSERT INTO difficulty (difficulty_name, difficulty_link)
+VALUES 
+   ('Facile','easy'),
+	('Normal','normal'),
+   ('Difficile','hard');
+
+CREATE TABLE score(
+   score_id INTEGER,
+   score_name TEXT NOT NULL,
+   score_moves INTEGER NOT NULL,
+   score_time INTEGER,
+   difficulty_id INTEGER NOT NULL,
+   PRIMARY KEY(score_id),
+   FOREIGN KEY(id_difficulty) REFERENCES difficulty(id_difficulty)
+);
